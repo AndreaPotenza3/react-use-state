@@ -1,14 +1,15 @@
-import languages from '../../languages'
 import style from './button.module.css'
 
-export default function Button() {
+export default function Button({ item, callback = () => { }, className = '' }) {
+
+    const { id, title, description } = item
+
     return (
-        <ul className={style.buttons}>
-            {languages.map((language) => (
-                <li key={language.id}>
-                    <button className={style.btn}>{language.title}</button>
-                </li>
-            ))}
-        </ul>
+        <li>
+            <button onClick={callback} className={`${style.btn} ${className}`}>{title}</button>
+        </li>
     )
 }
+
+
+
